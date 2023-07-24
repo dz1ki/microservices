@@ -29,7 +29,7 @@ export async function sendToQueue(
         statusCode: 408,
       });
       promises.delete(correlationId);
-    }, 17000);
+    }, 7000);
   }
   logBunyan.info(
     `Data for generation Invoice is sent to the queue: ${sendInvoice}`

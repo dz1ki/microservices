@@ -25,25 +25,3 @@ services:
 networks:
   default:
     driver: bridge
-
-  # web-api:
-  #   build:
-  #     context: ./web-api
-  #     dockerfile: ./Dockerfile
-  #   restart: always
-  #   command: npm run start
-  #   environment:
-  #     - PORT=3000
-  #   ports:
-  #     - "3000:3000"
-  #   volumes:
-  #     - ./shared/local.json:/web-api/config/local.json
-
-  # worker-pdf:
-  #   build:
-  #     context: ./worker-pdf
-  #     dockerfile: ./Dockerfile
-  #   restart: always
-  #   command: npm run start
-  #   volumes:
-  #     - ./shared/local.json:/worker-pdf/config/local.json
