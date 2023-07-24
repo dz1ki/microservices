@@ -1,0 +1,57 @@
+openapi: 3.0.0
+info:
+  title: Microservices
+  description: Service for generating invoices.
+  version: 1.0.0
+servers:
+  - url: http://localhost:3000
+    description: Development server
+
+paths:
+  /generateInvoice:
+    post:
+      tags:
+        - Invoice
+      summary: Generate invoice.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/reqInvoice"
+
+      responses:
+        200:
+          description: Succes.
+        408:
+          description: Pdf generation service not responding.
+        500:
+          description: Server error.
+
+components:
+  schemas:
+    reqInvoice:
+      type: object
+      additionalProperties: false
+      required:
+        - email
+        - completedTasks
+      properties:
+        email:
+          type: string
+          description: Client email
+          example: pete78@examples.com
+        completedTasks:
+          type: array
+          items:
+            type: object
+            required:
+              - taskName
+              - cost
+            properties:
+              taskName:
+                type: string
+                example: Repairing Car
+              cost:
+                type: number
+                example: 27
