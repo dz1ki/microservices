@@ -31,7 +31,7 @@ export type ObjectForPDF = {
 
 export enum JobName {
   GenerateInvoice = "generateInvoice",
-  SendInvoice = "sendInvoice",
+  InvoiceGenerated = "invoiceGenerated",
 }
 
 export type ParramMessageQueue = {

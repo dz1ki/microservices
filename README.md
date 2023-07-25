@@ -21,13 +21,13 @@ The working process:
 2. On the server side "web-api":  
    2.1 Using e-mail, the server retrieves additional information about the client from the database to generate an invoice.  
    2.3 Sends data to the queue: "generateInvoice".  
-   2.4 Waiting for a response from the "sendInvoice" queue.  
+   2.4 Waiting for a response from the "generateInvoice" queue.  
    2.5 If within 7s. no response, an error is returned.
 
 3. On the microservice "worker-pdf" side:  
    3.1 The event listener responds to messages.  
    3.2 Calls a function to generate an invoice.  
-   3.3 After the file is generated, it is sent to the queue: "sendInvoice".
+   3.3 After the file is generated, it is sent to the queue: "invoiceGenerated".
 
 For clarity, the Invoice generation function uses a delay of 2s. Logs are stored in the folder: Logs.
 

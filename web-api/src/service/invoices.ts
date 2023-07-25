@@ -3,8 +3,7 @@ import { Client } from "../models/client";
 import { v4 as uuidv4 } from "uuid";
 import { JobName, ObjectForPDF, Task } from "../types";
 import { ownerInfo } from "../data/constants";
-import { sendToQueue } from "../queue/invoiceQueue";
-import { logBunyan } from "../index";
+import { sendToQueueAsync } from "../queue/queue";
 
 function getSumm(completedTasks: Task[]) {
   return completedTasks.reduce((accum: number, element: { cost: number }) => {
@@ -58,9 +57,9 @@ export async function generate(clientEmail: string, completedTasks: Task[]) {
   };
   const message = { objectForPDF, ownerInfo };
 
-  const resultJobs = await sendToQueue(
+  const resultJobs = await sendToQueueAsync(
     JobName.GenerateInvoice,
-    JobName.SendInvoice,
+    JobName.InvoiceGenerated,
     message
   );
 
