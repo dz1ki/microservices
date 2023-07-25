@@ -1,15 +1,18 @@
 import * as bunyan from "bunyan";
 import * as path from "path";
 
+const levelInfo = "info";
+const pathSave = "../../logs/allLogs.log";
+
 function loggerConfig(name: string) {
   const streams: bunyan.Stream[] = [
     {
-      level: "info",
+      level: levelInfo,
       stream: process.stdout,
     },
     {
-      level: "info",
-      path: path.join(__dirname, "../../logs/allLogs.log"),
+      level: levelInfo,
+      path: path.join(__dirname, pathSave),
     },
   ];
   return {
