@@ -1,0 +1,8 @@
+{
+  "amqpConfig": {
+    "username": "Yra",
+    "host": "localhost",
+    "port": 5672,
+    "password": ""
+  }
+}

@@ -1,0 +1,27 @@
+version: "3.1"
+
+volumes:
+  pg_selectel:
+
+services:
+  pg_db:
+    image: postgres:14.1-alpine
+    environment:
+      - POSTGRES_PASSWORD=123
+      - POSTGRES_USER=postgres
+    ports:
+      - ${POSTGRES_PORT:-5432}:5432
+
+  rabbitmq:
+    image: rabbitmq:3.10.7-management
+    container_name: rabbitmq
+    environment:
+      - RABBITMQ_DEFAULT_USER=Yra
+      - RABBITMQ_DEFAULT_PASS=1234
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+
+networks:
+  default:
+    driver: bridge

@@ -1,0 +1,9 @@
+{
+  "DBconfig": {
+    "password": "123"
+  },
+
+  "amqpConfig": {
+    "password": "1234"
+  }
+}
